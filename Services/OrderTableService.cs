@@ -38,11 +38,7 @@ namespace CoffeeAndChill.Services
                 ["Status"] = order.Status
             };
 
-<<<<<<< HEAD
 
-=======
-           
->>>>>>> ba82d7c77da4c5b72408f9528d208817378c12ae
             await _tableClient.UpsertEntityAsync(entity, TableUpdateMode.Replace);
         }
 

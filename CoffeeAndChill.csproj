@@ -30,4 +30,9 @@
 			  SkipUnchangedFiles="true"
 			  Condition="Exists('$(PublishDir)functions.metadata')" />
 	</Target>
+	
+	<ItemGroup>
+		<!-- Keep the separate Gateway project out of this project's compilation. -->
+		<Compile Remove="Gateway/**/*.cs" />
+	</ItemGroup>
 </Project>
