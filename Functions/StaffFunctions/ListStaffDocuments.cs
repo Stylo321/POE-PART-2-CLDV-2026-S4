@@ -1,4 +1,5 @@
-﻿using Azure.Storage.Blobs;
+﻿
+using Azure.Storage.Blobs;
 using Azure.Storage.Blobs.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -27,8 +28,12 @@ namespace CoffeeAndChill.Functions.StaffFunctions
             BlobContainerClient containerClient =
                 blobServiceClient.GetBlobContainerClient("staff-docs");
 
+            // Create the container if it does not exist.
+            await containerClient.CreateIfNotExistsAsync();
+
             var documents = new List<object>();
 
+            // Retrieve all documents stored in the container.
             await foreach (BlobItem blobItem in containerClient.GetBlobsAsync())
             {
                 documents.Add(new
